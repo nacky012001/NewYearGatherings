@@ -60,6 +60,7 @@ public class AntieController : MonoBehaviour
 
     public void Submit(string prop)
     {
+        if (string.IsNullOrEmpty(prop)) return;
 
         var task = FindObjectOfType<main>().gameTasks.GetMyTask(index);
 

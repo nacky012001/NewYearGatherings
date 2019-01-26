@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 
     private GameObject targetNpc;
 
+    private GameObject targetWidget;
+
     private string holdingObject;
 
     public void Update()
@@ -16,46 +18,62 @@ public class PlayerController : MonoBehaviour
 
     public void MoveForward()
     {
-        if (Input.GetKey(KeyCode.W))//Press up arrow key to move forward on the Y AXIS
+        if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(0, playerSpeed * Time.deltaTime, 0);
         }
-        if (Input.GetKey(KeyCode.S))//Press up arrow key to move forward on the Y AXIS
+        if (Input.GetKey(KeyCode.S))
         {
             transform.Translate(0, -playerSpeed * Time.deltaTime, 0);
         }
-        if (Input.GetKey(KeyCode.A))//Press up arrow key to move forward on the Y AXIS
+        if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(-playerSpeed * Time.deltaTime, 0, 0);
         }
-        if (Input.GetKey(KeyCode.D))//Press up arrow key to move forward on the Y AXIS
+        if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(playerSpeed * Time.deltaTime, 0, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.J))//Press up arrow key to move forward on the Y AXIS
+        if (Input.GetKeyDown(KeyCode.J))
         {
             if (targetNpc != null)
             {
-                var antieController  = targetNpc.GetComponent<AntieController>() as AntieController;
+                var antieController = targetNpc.GetComponent<AntieController>() as AntieController;
                 if (antieController != null) antieController.Submit(holdingObject);
+            }
+
+            if(targetWidget != null)
+            {
+                var waterConroller = targetWidget.GetComponent<WaterController>() as WaterController;
+                if (waterConroller != null) holdingObject = waterConroller.Use();
             }
         }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "npc")
+        switch (collider.tag)
         {
-            targetNpc = collider.gameObject;
+            case "npc":
+                targetNpc = collider.gameObject;
+                break;
+            case "widget":
+                targetWidget = collider.gameObject;
+                break;
         }
     }
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.tag == "npc")
+        switch (collider.tag)
         {
-            targetNpc = null;
+            case "npc":
+                targetNpc = null;
+                break;
+            case "widget":
+                targetWidget = null;
+                break;
         }
     }
 }
