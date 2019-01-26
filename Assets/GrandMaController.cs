@@ -40,7 +40,7 @@ public class GrandMaController : MonoBehaviour
         if (isDoing)
         {
             iTween.MoveTo(this.gameObject, iTween.Hash("name", "test", "path", iTweenPath.GetPath("Back"), "time", 3f, "easeType", iTween.EaseType.linear, "onComplete", "OnGoBacked"));
-            ListExtensions.GetMyTask(FindObjectOfType<main>().gameTasks, index).status = 'S';
+            FindObjectOfType<main>().gameTasks.GetMyTask(index).status = 'S';
             isDoing = false;
             isGoBacked = false;
         }
@@ -52,7 +52,7 @@ public class GrandMaController : MonoBehaviour
         if (isDoing)
             {
                 iTween.MoveTo(this.gameObject, iTween.Hash("name", "test", "path", iTweenPath.GetPath("Back"), "time", 3f, "easeType", iTween.EaseType.linear, "onComplete", "OnGoBacked"));
-                ListExtensions.GetMyTask(FindObjectOfType<main>().gameTasks, index).status = 'F';
+                FindObjectOfType<main>().gameTasks.GetMyTask(index).status = 'F';
                 isDoing = false;
                 isGoBacked = false;
             }

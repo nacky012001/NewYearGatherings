@@ -9,6 +9,8 @@ TagManager:
   - npc7
   - TV
   - GrandMa
+  - widget
+  - prop
   layers:
   - Default
   - TransparentFX
