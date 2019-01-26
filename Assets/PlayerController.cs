@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed; //speed player moves
 
     public float dashDistance;
-    public float dashTimer;
-    public float dashCooldown;
+
+    public Transform dashStars;
 
     private GameObject targetNpc;
 
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rigidbody2D;
 
+
     public void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -25,11 +26,17 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
+        var direction = new Vector3(Input.GetAxis("P1_Horizontal"), Input.GetAxis("P1_Vertical"), 0).normalized;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && direction.magnitude > 0)
         {
-            var normalizeVector = new Vector3(Input.GetAxis("P1_Horizontal"), Input.GetAxis("P1_Vertical"), 0).normalized;
-            rigidbody2D.velocity = new Vector3(dashDistance * normalizeVector.x, dashDistance * normalizeVector.y, 0);
+            var lastPosition = gameObject.transform.position;
+
+            rigidbody2D.velocity = new Vector3(dashDistance * direction.x, dashDistance * direction.y, 0);
+
+            var starts = Instantiate(dashStars, lastPosition, Quaternion.Euler(direction.y * 90, direction.x * -90, 0));
+            starts.gameObject.SetActive(true);
+            starts.GetComponent<ParticleSystem>().Play();
         }
         else
         {
