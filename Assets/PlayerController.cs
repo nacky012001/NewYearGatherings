@@ -53,6 +53,13 @@ public class PlayerController : MonoBehaviour
                     antieController.Submit(holdingObject);
                     holdingObject = null;
                 }
+
+                var tvController = targetNpc.GetComponentInChildren<TVController>() as TVController;
+                if (tvController != null)
+                {
+                    tvController.NextChannel();
+                    holdingObject = null;
+                }
             }
 
             if (targetWidget != null)
@@ -99,9 +106,6 @@ public class PlayerController : MonoBehaviour
             case "npc7":
                 collider.gameObject.GetComponent<NPC7Controller>().GoBack();
                 break;
-            case "TV":
-                FindObjectOfType<TVController>().NextChannel();
-                break;
             case "GrandMa":
                 collider.gameObject.GetComponent<GrandMaController>().StartWalk();
                 break;
@@ -120,6 +124,44 @@ public class PlayerController : MonoBehaviour
                 break;
             case "GrandMa":
                collider.gameObject.GetComponent<GrandMaController>().GoBackFail();
+                break;
+        }
+    }
+
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.collider.tag);
+
+        switch (collision.collider.tag)
+        {
+            case "npc":
+                targetNpc = collision.collider.gameObject;
+                break;
+            case "widget":
+                targetWidget = collision.collider.gameObject;
+                break;
+            case "npc7":
+                collision.collider.gameObject.GetComponent<NPC7Controller>().GoBack();
+                break;
+            case "GrandMa":
+                collision.collider.gameObject.GetComponent<GrandMaController>().StartWalk();
+                break;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        switch (collision.collider.tag)
+        {
+            case "npc":
+                targetNpc = null;
+                break;
+            case "widget":
+                targetWidget = null;
+                break;
+            case "GrandMa":
+                collision.collider.gameObject.GetComponent<GrandMaController>().GoBackFail();
                 break;
         }
     }

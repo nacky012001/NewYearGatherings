@@ -27,8 +27,6 @@ public class UncleController : MonoBehaviour
     {
         var task = FindObjectOfType<main>().gameTasks.GetMyTask(index);
 
-     
-
         if (task != null && isTaskComplete)
         {
             ballon.gameObject.SetActive(true);
@@ -61,8 +59,6 @@ public class UncleController : MonoBehaviour
 
     public void Submit(int tvIndex)
     {
-      
-
         var task = FindObjectOfType<main>().gameTasks.GetMyTask(index);
 
         if (task != null)
