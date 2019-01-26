@@ -14,9 +14,12 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
+       
+
+
         Debug.Log(playerSpeed * Input.GetAxis("P1_Vertical"));
 
-        transform.Translate(playerSpeed * Input.GetAxis("P1_Horizontal"), playerSpeed * Input.GetAxis("P1_Vertical"), 0);
+        transform.Translate(playerSpeed * Input.GetAxis("P1_Horizontal") * Time.deltaTime, playerSpeed * Input.GetAxis("P1_Vertical") * Time.deltaTime, 0);
 
         if (Input.GetKeyDown(KeyCode.J))
         {
