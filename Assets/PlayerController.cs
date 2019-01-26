@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,12 +9,29 @@ public class PlayerController : MonoBehaviour
     private GameObject targetNpc;
 
     private GameObject targetWidget;
-
+    
     private string holdingObject;
 
     public void Update()
     {
         MoveForward(); // Player Movement 
+
+        ShowHoldingObject();
+    }
+
+    public void ShowHoldingObject()
+    {
+        var transform = gameObject.transform.GetComponentsInChildren<Transform>(true).ToList();
+
+        if (holdingObject == "water")
+        {
+            var water = transform.Where(t => t.name == "water").First();
+            water.gameObject.SetActive(true);
+        }
+        else
+        {
+            transform.Select(t => t.gameObject).Where(t => t.tag == "prop").ToList().ForEach(t => t.gameObject.SetActive(false));
+        }
     }
 
     public void MoveForward()
@@ -45,7 +63,6 @@ public class PlayerController : MonoBehaviour
                     antieController.Submit(holdingObject);
                     holdingObject = null;
                 }
-                
             }
 
             if(targetWidget != null)
