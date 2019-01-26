@@ -9,6 +9,13 @@ using System.Diagnostics;
 using System; //#1
 public class main : MonoBehaviour
 {
+    public class GameTask {
+        public string name;
+        public int index;
+        public char status;   //S- Success F- Fail N- Not Complete
+
+    }
+    public List<GameTask> gameTasks;
     public Text timec;
     public Text ScoreText; //宣告一個ScoreText的text
     public int Score = 0;
@@ -19,8 +26,8 @@ public class main : MonoBehaviour
     void Start()
     {
         temp = 3660f;
+        gameTasks = new List<GameTask>();
     }
-
     // Update is called once per frame
     void Update()
     {
