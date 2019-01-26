@@ -9,6 +9,10 @@ public class AntieController : MonoBehaviour
 {
     public int index;
 
+    public int talkingPercentage;
+    public float talkingPeriod;
+    public float talkingTimer;
+
     private Water water;
 
     private Food food;
@@ -17,6 +21,7 @@ public class AntieController : MonoBehaviour
     {
         water = new Water();
         food = new Food();
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
@@ -25,36 +30,59 @@ public class AntieController : MonoBehaviour
         var task = FindObjectOfType<main>().gameTasks.GetMyTask(index);
 
         var tranforms = gameObject.transform.GetComponentsInChildren<Transform>(true).ToList();
-        var ballon = tranforms.Where(t => t.name == "ballon").First();
 
         if (task != null)
         {
+            var ballon = tranforms.Where(t => t.name == "ballon").First();
             ballon.gameObject.SetActive(true);
+
+            var talkings = tranforms.Where(t => t.tag == "talkingSymbol").ToList();
+            talkings.Select(t => t.gameObject.GetComponent<ParticleSystem>()).ToList()
+                    .ForEach(t => t.Stop());
 
             switch (task.name)
             {
                 case "water":
                     var water = tranforms.Where(t => t.name == "water").First();
-
                     water.gameObject.SetActive(true);
-
                     break;
 
                 case "food":
                     var food = tranforms.Where(t => t.name == "food").First();
-
                     food.gameObject.SetActive(true);
-
                     break;
             }
         }
         else
         {
-            ballon.gameObject.SetActive(false);
-            var food = tranforms.Where(t => t.name == "food").First();
-            food.gameObject.SetActive(false);
-            var water = tranforms.Where(t => t.name == "water").First();
-            water.gameObject.SetActive(false);
+            tranforms.Where(t => t.tag == "dialog").ToList().ForEach(t => t.gameObject.SetActive(false));
+
+            Talking(tranforms);
+        }
+    }
+
+    public void Talking(List<Transform> transforms)
+    {
+        talkingTimer += Time.deltaTime;
+
+        if (talkingTimer > talkingPeriod)
+        {
+            var talkings = transforms.Where(t => t.tag == "talkingSymbol").ToList();
+
+            var percentage = Mathf.RoundToInt(Random.Range(0, 100));
+
+            if (percentage <= talkingPercentage)
+            {
+                talkings.Select(t => t.gameObject.GetComponent<ParticleSystem>()).ToList()
+                        .ForEach(t => t.Play());
+            }
+            else
+            {
+                talkings.Select(t => t.gameObject.GetComponent<ParticleSystem>()).ToList()
+                        .ForEach(t => t.Stop());
+            }
+
+            talkingTimer = 0.0f;
         }
     }
 
@@ -64,14 +92,14 @@ public class AntieController : MonoBehaviour
 
         var task = FindObjectOfType<main>().gameTasks.GetMyTask(index);
 
-        if(task != null)
+        if (task != null)
         {
             switch (task.name)
             {
                 case "water":
                     if (water.IsComplete(prop))
                     {
-                        task.status = 'S';    
+                        task.status = 'S';
                     }
 
                     break;
