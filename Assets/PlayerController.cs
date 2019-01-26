@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
                 targetWidget = null;
                 break;
             case "GrandMa":
-                FindObjectOfType<GrandMaController>().GoBackFail();
+               collider.gameObject.GetComponent<GrandMaController>().GoBackFail();
                 break;
         }
     }

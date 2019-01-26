@@ -29,5 +29,6 @@ public class TVController : MonoBehaviour
             currentIndex = 0;
         }
         channel.text = channelList[currentIndex];
+        FindObjectOfType<UncleController>().Submit(currentIndex);
     }
 }
