@@ -12,6 +12,7 @@ public class main : MonoBehaviour
     public class GameTask {
         public string name;
         public int index;
+        public string goal;
         public char status;   //S- Success F- Fail N- Not Complete
         public int coolDown;
     }
@@ -81,7 +82,7 @@ public class main : MonoBehaviour
 
                 index = GetNextRandomPlayer(3, 6);
                 if(index>0)
-                    gameTasks.Add(new GameTask() { name= name, index= index ,status='N'});
+                    gameTasks.Add(new GameTask() { name= name, index = index ,status='N'});
                 break;
             case "food":
 

@@ -5,11 +5,12 @@ public class PlayerController : MonoBehaviour
 {
     public float playerSpeed = 10; //speed player moves
 
-    public GameObject targetNpc;
+    private GameObject targetNpc;
+
+    private string holdingObject;
 
     public void Update()
     {
-
         MoveForward(); // Player Movement 
     }
 
@@ -35,7 +36,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))//Press up arrow key to move forward on the Y AXIS
         {
             if (targetNpc != null)
-                Debug.Log(targetNpc.name);
+            {
+                var antieController  = targetNpc.GetComponent<AntieController>() as AntieController;
+                if (antieController != null) antieController.Submit(holdingObject);
+            }
         }
     }
 
@@ -50,22 +54,6 @@ public class PlayerController : MonoBehaviour
     void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.tag == "npc")
-        {
-            targetNpc = null;
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "npc")
-        {
-            targetNpc = collision.collider.gameObject;
-        }   
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "npc")
         {
             targetNpc = null;
         }
