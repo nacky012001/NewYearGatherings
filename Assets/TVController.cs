@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class TVController : MonoBehaviour
 {
-    public Text channel;
-    public List<String> channelList = new List<string>() { "Sport", "Drama", "Film" };
+
+    public List<Sprite> sprites;
+    public SpriteRenderer channel;
     public int currentIndex;
     // Start is called before the first frame update
     void Start()
@@ -24,11 +25,11 @@ public class TVController : MonoBehaviour
     public void NextChannel()
     {
         currentIndex++;
-        if (currentIndex == 3)
+        if (currentIndex == 4)
         {
             currentIndex = 0;
         }
-        channel.text = channelList[currentIndex];
+        channel.sprite = sprites[currentIndex];
         FindObjectOfType<UncleController>().Submit(currentIndex);
     }
 }

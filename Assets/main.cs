@@ -158,7 +158,7 @@ public class main : MonoBehaviour
    
      private void GenerateRandomTask()
     {
-       int index= rnd.Next(0, 4);
+       int index= rnd.Next(0, 5);
         string taskName = taskList[index];
         GenerateTask(taskName);
     }

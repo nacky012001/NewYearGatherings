@@ -10,6 +10,7 @@ public class UncleController : MonoBehaviour
 
     public int index;
     public GameObject ballon;
+    public GameObject tvOject;
     private TVShow tv;
     public bool isTaskComplete;
     public System.Random ran;
@@ -37,7 +38,7 @@ public class UncleController : MonoBehaviour
                 case "tv":
                     int tvindex = getRanDomTVChannel();
                     tv.setIndex(tvindex);
-                    ballon.GetComponentInChildren<SpriteRenderer>().color = colorList[tvindex];
+                    tvOject.GetComponent<SpriteRenderer>().sprite = FindObjectOfType<TVController>().sprites[tvindex];
                     isTaskComplete = false;
                     break;
             }
