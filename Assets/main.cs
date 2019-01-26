@@ -26,7 +26,24 @@ public class main : MonoBehaviour
     void Start()
     {
         temp = 3660f;
-        gameTasks = new List<GameTask>();
+        gameTasks = new List<GameTask>()
+        {
+            new GameTask{
+                index = 3,
+                name = "water",
+                status = 'N'
+            },
+            new GameTask{
+                index = 4,
+                name = "food",
+                status = 'N'
+            },
+            new GameTask{
+                index = 5,
+                name = "water",
+                status = 'N'
+            }
+        };
     }
     // Update is called once per frame
     void Update()
