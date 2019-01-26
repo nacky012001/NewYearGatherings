@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Assets;
+using Assets.tasks;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,17 +9,21 @@ public class AntieController : MonoBehaviour
 {
     public int index;
 
+    private Water water;
+
+    private Food food;
+
     void Start()
     {
-        
+        water = new Water();
+        food = new Food();
     }
 
     // Update is called once per frame
     void Update()
     {
-        var list = FindObjectOfType<main>().gameTasks;
+        var task = FindObjectOfType<main>().gameTasks.GetMyTask(index);
 
-        var task = list.Where(l => l.index == index).FirstOrDefault();
         var tranforms = gameObject.transform.GetComponentsInChildren<Transform>(true).ToList();
         var ballon = tranforms.Where(t => t.name == "ballon").First();
 
@@ -49,6 +55,34 @@ public class AntieController : MonoBehaviour
             food.gameObject.SetActive(false);
             var water = tranforms.Where(t => t.name == "water").First();
             water.gameObject.SetActive(false);
+        }
+    }
+
+    public void Submit(string prop)
+    {
+        if (string.IsNullOrEmpty(prop)) return;
+
+        var task = FindObjectOfType<main>().gameTasks.GetMyTask(index);
+
+        if(task != null)
+        {
+            switch (task.name)
+            {
+                case "water":
+                    if (water.IsComplete(prop))
+                    {
+                        task.status = 'S';    
+                    }
+
+                    break;
+                case "food":
+                    if (food.IsComplete(prop))
+                    {
+                        task.status = 'S';
+                    }
+
+                    break;
+            }
         }
     }
 }
