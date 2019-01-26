@@ -45,6 +45,10 @@ public class PlayerController : MonoBehaviour
         {
             targetNpc = collider.gameObject;
         }
+        if (collider.tag == "npc7")
+        {
+            FindObjectOfType<NPC7Controller>().GoBack();
+        }
     }
 
     void OnTriggerExit2D(Collider2D collider)

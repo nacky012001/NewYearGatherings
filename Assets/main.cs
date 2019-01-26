@@ -28,6 +28,7 @@ public class main : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         FinalSuccessCount = 0;
         FinalFailCount = 0;
         temp = 3660f;
