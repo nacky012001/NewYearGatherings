@@ -12,14 +12,16 @@ public class PlayerController : MonoBehaviour
     
     private string holdingObject;
 
+    private Rigidbody2D rigidbody2D;
+
+    public void Start()
+    {
+        rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
     public void Update()
     {
-       
-
-
-        Debug.Log(playerSpeed * Input.GetAxis("P1_Vertical"));
-
-        transform.Translate(playerSpeed * Input.GetAxis("P1_Horizontal") * Time.deltaTime, playerSpeed * Input.GetAxis("P1_Vertical") * Time.deltaTime, 0);
+        rigidbody2D.velocity = new Vector3(playerSpeed * Input.GetAxis("P1_Horizontal"), playerSpeed * Input.GetAxis("P1_Vertical"), 0);
 
         if (Input.GetKeyDown(KeyCode.J))
         {
