@@ -7,6 +7,8 @@ TagManager:
   - npc1
   - npc
   - npc7
+  - TV
+  - GrandMa
   layers:
   - Default
   - TransparentFX

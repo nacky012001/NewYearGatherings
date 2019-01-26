@@ -67,8 +67,14 @@ public class PlayerController : MonoBehaviour
                 targetWidget = collider.gameObject;
                 break;
             case "npc7":
-            FindObjectOfType<NPC7Controller>().GoBack();
-            break;
+                FindObjectOfType<NPC7Controller>().GoBack();
+                break;
+            case "TV":
+                FindObjectOfType<TVController>().NextChannel();
+                break;
+            case "GrandMa":
+                FindObjectOfType<GrandMaController>().StartWalk();
+                break;
         }
     }
 
@@ -81,6 +87,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case "widget":
                 targetWidget = null;
+                break;
+            case "GrandMa":
+                FindObjectOfType<GrandMaController>().GoBackFail();
                 break;
         }
     }

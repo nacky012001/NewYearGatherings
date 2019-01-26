@@ -14,7 +14,7 @@ public class ShowResultC : MonoBehaviour
     {
         finalscoreText.text = main.finalScore.ToString();
         successscoreText.text = main.FinalSuccessCount.ToString() +" X "+ main.SuccessScore + " = " + (main.FinalSuccessCount* main.SuccessScore).ToString();
-        failscoreText.text = main.FinalFailCount.ToString()+ " X "+ main.FailScore + " = " + (main.FinalFailCount * main.FailScore).ToString();
+        failscoreText.text = main.FinalFailCount.ToString()+ " X -"+ main.FailScore + " = -" + (main.FinalFailCount * main.FailScore).ToString();
     }
 
     // Update is called once per frame

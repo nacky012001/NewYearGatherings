@@ -37,6 +37,7 @@ public class main : MonoBehaviour
         Score = 0;
         GenerateTask("water");
         GenerateTask("food");
+        GenerateTask("room");
         //GenerateTask("food");
         Application.targetFrameRate = 60;
     }
@@ -93,7 +94,7 @@ public class main : MonoBehaviour
                 break;
             case "toilet":
 
-                index = GetNextRandomPlayer(1, 2);
+                index = GetNextRandomPlayer(2, 2);
                 if (index > 0)
                     gameTasks.Add(new GameTask() { name = name, index = index, status = 'N' });
                 break;
@@ -120,7 +121,7 @@ public class main : MonoBehaviour
         countDown += Time.deltaTime;
         if(countDown > 5.0f)
         {
-         
+            GenerateTask("toilet");
             if (gameTasks.Count<4)
                 GenerateRandomTask();
             countDown = 0f;
