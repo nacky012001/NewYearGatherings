@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 108425444}
   m_Layer: 0
   m_Name: ballon
-  m_TagString: Untagged
+  m_TagString: dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -517,6 +517,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 4
+  talkingPercentage: 0
+  talkingPeriod: 0
+  talkingTimer: 0
 --- !u!212 &218685951
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1123,7 +1126,7 @@ GameObject:
   - component: {fileID: 417436845}
   m_Layer: 0
   m_Name: water
-  m_TagString: Untagged
+  m_TagString: dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1558,7 +1561,7 @@ GameObject:
   - component: {fileID: 689008153}
   m_Layer: 0
   m_Name: water
-  m_TagString: Untagged
+  m_TagString: dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1918,7 +1921,7 @@ GameObject:
   - component: {fileID: 969985546}
   m_Layer: 0
   m_Name: food
-  m_TagString: Untagged
+  m_TagString: dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2052,6 +2055,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4411798746929171242, guid: 77e270b967d80409a9f742e6adec8e30,
+        type: 3}
+      propertyPath: m_TagString
+      value: dialog
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411798746897410079, guid: 77e270b967d80409a9f742e6adec8e30,
+        type: 3}
+      propertyPath: m_TagString
+      value: dialog
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77e270b967d80409a9f742e6adec8e30, type: 3}
 --- !u!1 &1036533894
@@ -2066,7 +2079,7 @@ GameObject:
   - component: {fileID: 1036533896}
   m_Layer: 0
   m_Name: food
-  m_TagString: Untagged
+  m_TagString: dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2358,7 +2371,7 @@ GameObject:
   - component: {fileID: 1387105367}
   m_Layer: 0
   m_Name: ballon
-  m_TagString: Untagged
+  m_TagString: dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2681,7 +2694,7 @@ GameObject:
   - component: {fileID: 1443465617}
   m_Layer: 0
   m_Name: ballon
-  m_TagString: Untagged
+  m_TagString: dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2896,7 +2909,7 @@ GameObject:
   - component: {fileID: 1518410161}
   m_Layer: 0
   m_Name: water
-  m_TagString: Untagged
+  m_TagString: dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3029,6 +3042,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683900121598514496, guid: 0c19e39b96e6c4c40950f096ebfcf2ca,
+        type: 3}
+      propertyPath: m_TagString
+      value: dialog
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683900121472785510, guid: 0c19e39b96e6c4c40950f096ebfcf2ca,
+        type: 3}
+      propertyPath: m_TagString
+      value: dialog
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c19e39b96e6c4c40950f096ebfcf2ca, type: 3}
@@ -3410,6 +3433,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 3
+  talkingPercentage: 0
+  talkingPeriod: 0
+  talkingTimer: 0
 --- !u!1 &2004071547
 GameObject:
   m_ObjectHideFlags: 0
@@ -3422,7 +3448,7 @@ GameObject:
   - component: {fileID: 2004071549}
   m_Layer: 0
   m_Name: food
-  m_TagString: Untagged
+  m_TagString: dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3561,6 +3587,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1201887170337541521, guid: 323b8f656814b402a922c71350a20c67,
+        type: 3}
+      propertyPath: m_TagString
+      value: dialog
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201887169994818418, guid: 323b8f656814b402a922c71350a20c67,
+        type: 3}
+      propertyPath: m_TagString
+      value: dialog
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 323b8f656814b402a922c71350a20c67, type: 3}
 --- !u!1 &2065074968
@@ -3633,6 +3669,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 5
+  talkingPercentage: 0
+  talkingPeriod: 0
+  talkingTimer: 0
 --- !u!212 &2065074972
 SpriteRenderer:
   m_ObjectHideFlags: 0

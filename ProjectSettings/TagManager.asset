@@ -11,6 +11,7 @@ TagManager:
   - GrandMa
   - widget
   - prop
+  - dialog
   layers:
   - Default
   - TransparentFX
