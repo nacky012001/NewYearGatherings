@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
             var water = transform.Where(t => t.name == "water").First();
             water.gameObject.SetActive(true);
         }
+        else if(holdingObject == "food") {
+            var food = transform.Where(t => t.name == "food").First();
+            food.gameObject.SetActive(true);
+        }
         else
         {
             transform.Select(t => t.gameObject).Where(t => t.tag == "prop").ToList().ForEach(t => t.gameObject.SetActive(false));
@@ -69,6 +73,10 @@ public class PlayerController : MonoBehaviour
             {
                 var waterConroller = targetWidget.GetComponent<WaterController>() as WaterController;
                 if (waterConroller != null) holdingObject = waterConroller.Use();
+
+
+                var foodController = targetWidget.GetComponent<FoodController>() as FoodController;
+                if (foodController != null) holdingObject = foodController.Use();
             }
         }
     }
