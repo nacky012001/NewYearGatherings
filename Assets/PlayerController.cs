@@ -40,7 +40,12 @@ public class PlayerController : MonoBehaviour
             if (targetNpc != null)
             {
                 var antieController = targetNpc.GetComponent<AntieController>() as AntieController;
-                if (antieController != null) antieController.Submit(holdingObject);
+                if (antieController != null)
+                {
+                    antieController.Submit(holdingObject);
+                    holdingObject = null;
+                }
+                
             }
 
             if(targetWidget != null)
