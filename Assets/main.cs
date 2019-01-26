@@ -99,12 +99,13 @@ public class main : MonoBehaviour
                     gameTasks.Add(new GameTask() { name = name, index = index, status = 'N' });
                 break;
             case "tv":
-                index = GetNextRandomPlayer(3, 6);
+                index = GetNextRandomPlayer(6, 6);
                 if (index > 0)
                     gameTasks.Add(new GameTask() { name = name, index = index, status = 'N' });
                 break;
             case "room":
-                index = GetNextRandomPlayer(7, 7);
+                index = GetNextRandomPlayer(7, 9);
+                
                 if (index > 0)
                     gameTasks.Add(new GameTask() { name = name, index = index, status = 'N' });
                 break;
@@ -121,6 +122,7 @@ public class main : MonoBehaviour
         countDown += Time.deltaTime;
         if(countDown > 5.0f)
         {
+            GenerateTask("room");
             GenerateTask("toilet");
             if (gameTasks.Count<4)
                 GenerateRandomTask();

@@ -26,7 +26,7 @@ public class NPC7Controller : MonoBehaviour
         var task = FindObjectOfType<main>().gameTasks.GetMyTask(index);
         if (task != null&& !isDoing && isGoBacked)
         {
-            iTween.MoveTo(this.gameObject, iTween.Hash("name", "test", "path", iTweenPath.GetPath("First"), "time", 3f, "easeType", iTween.EaseType.linear));
+            iTween.MoveTo(this.gameObject, iTween.Hash("name", "test", "path", iTweenPath.GetPath("Go" + index), "time", 3f, "easeType", iTween.EaseType.linear));
             isDoing = true;
         }
 
@@ -44,7 +44,7 @@ public class NPC7Controller : MonoBehaviour
     public void GoBack()
     {
         if (isDoing) { 
-        iTween.MoveTo(this.gameObject, iTween.Hash("name", "test", "path", iTweenPath.GetPath("Second"), "time", 3f, "easeType",iTween.EaseType.linear, "onComplete", "OnGoBacked"));
+        iTween.MoveTo(this.gameObject, iTween.Hash("name", "test", "path", iTweenPath.GetPath("Back"+index), "time", 3f, "easeType",iTween.EaseType.linear, "onComplete", "OnGoBacked"));
         ListExtensions.GetMyTask(FindObjectOfType<main>().gameTasks, index).status = 'S';
         isDoing = false;
             isGoBacked = false;
@@ -54,7 +54,7 @@ public class NPC7Controller : MonoBehaviour
     {
         if (isDoing)
         {
-            iTween.MoveTo(this.gameObject, iTween.Hash("name", "test", "path", iTweenPath.GetPath("Second"), "time", 3f, "easeType", iTween.EaseType.linear, "onComplete", "OnGoBacked"));
+            iTween.MoveTo(this.gameObject, iTween.Hash("name", "test", "path", iTweenPath.GetPath("Back" + index), "time", 3f, "easeType", iTween.EaseType.linear, "onComplete", "OnGoBacked"));
             ListExtensions.GetMyTask(FindObjectOfType<main>().gameTasks, index).status = 'F';
             isDoing = false;
             isGoBacked = false;
