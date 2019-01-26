@@ -4,7 +4,7 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
-    public float playerSpeed = 10; //speed player moves
+    public float playerSpeed; //speed player moves
 
     private GameObject targetNpc;
 
@@ -14,7 +14,32 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        MoveForward(); // Player Movement 
+        Debug.Log(playerSpeed * Input.GetAxis("P1_Vertical"));
+
+        transform.Translate(playerSpeed * Input.GetAxis("P1_Horizontal"), playerSpeed * Input.GetAxis("P1_Vertical"), 0);
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            if (targetNpc != null)
+            {
+                var antieController = targetNpc.GetComponent<AntieController>() as AntieController;
+                if (antieController != null)
+                {
+                    antieController.Submit(holdingObject);
+                    holdingObject = null;
+                }
+            }
+
+            if (targetWidget != null)
+            {
+                var waterConroller = targetWidget.GetComponent<WaterController>() as WaterController;
+                if (waterConroller != null) holdingObject = waterConroller.Use();
+
+
+                var foodController = targetWidget.GetComponent<FoodController>() as FoodController;
+                if (foodController != null) holdingObject = foodController.Use();
+            }
+        }
 
         ShowHoldingObject();
     }
@@ -35,49 +60,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             transform.Select(t => t.gameObject).Where(t => t.tag == "prop").ToList().ForEach(t => t.gameObject.SetActive(false));
-        }
-    }
-
-    public void MoveForward()
-    {
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(0, playerSpeed * Time.deltaTime, 0);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(0, -playerSpeed * Time.deltaTime, 0);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(-playerSpeed * Time.deltaTime, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(playerSpeed * Time.deltaTime, 0, 0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            if (targetNpc != null)
-            {
-                var antieController = targetNpc.GetComponent<AntieController>() as AntieController;
-                if (antieController != null)
-                {
-                    antieController.Submit(holdingObject);
-                    holdingObject = null;
-                }
-            }
-
-            if(targetWidget != null)
-            {
-                var waterConroller = targetWidget.GetComponent<WaterController>() as WaterController;
-                if (waterConroller != null) holdingObject = waterConroller.Use();
-
-
-                var foodController = targetWidget.GetComponent<FoodController>() as FoodController;
-                if (foodController != null) holdingObject = foodController.Use();
-            }
         }
     }
 
