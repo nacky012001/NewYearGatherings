@@ -6,6 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     public float playerSpeed; //speed player moves
 
+    public float dashDistance;
+    public float dashTimer;
+    public float dashCooldown;
+
     private GameObject targetNpc;
 
     private GameObject targetWidget;
@@ -21,7 +25,16 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        rigidbody2D.velocity = new Vector3(playerSpeed * Input.GetAxis("P1_Horizontal"), playerSpeed * Input.GetAxis("P1_Vertical"), 0);
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            var normalizeVector = new Vector3(Input.GetAxis("P1_Horizontal"), Input.GetAxis("P1_Vertical"), 0).normalized;
+            rigidbody2D.velocity = new Vector3(dashDistance * normalizeVector.x, dashDistance * normalizeVector.y, 0);
+        }
+        else
+        {
+            rigidbody2D.velocity = new Vector3(playerSpeed * Input.GetAxis("P1_Horizontal"), playerSpeed * Input.GetAxis("P1_Vertical"), 0);
+        }
 
         if (Input.GetKeyDown(KeyCode.J))
         {
