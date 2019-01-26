@@ -30,12 +30,12 @@ public class main : MonoBehaviour
     {
         FinalSuccessCount = 0;
         FinalFailCount = 0;
-        temp = 600f;
+        temp = 3660f;
         gameTasks = new List<GameTask>();
         Score = 0;
         GenerateTask("water");
-        GenerateTask("water");
-        GenerateTask("tv");
+        GenerateTask("food");
+        //GenerateTask("food");
         Application.targetFrameRate = 60;
     }
     System.Random rnd = new System.Random();
@@ -118,7 +118,7 @@ public class main : MonoBehaviour
         countDown += Time.deltaTime;
         if(countDown > 5.0f)
         {
-            gameTasks[0].status = 'S';
+         
             if (gameTasks.Count<4)
                 GenerateRandomTask();
             countDown = 0f;
