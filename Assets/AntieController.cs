@@ -13,6 +13,10 @@ public class AntieController : MonoBehaviour
     public float talkingPeriod;
     public float talkingTimer;
 
+    public Transform wrong;
+    public Transform correct;
+    public Transform question;
+
     private Water water;
 
     private Food food;
@@ -91,15 +95,24 @@ public class AntieController : MonoBehaviour
         if (string.IsNullOrEmpty(prop)) return;
 
         var task = FindObjectOfType<main>().gameTasks.GetMyTask(index);
+        Transform result = null;
+        var position = gameObject.transform.position;
+        var resultPosition = new Vector3(position.x + 1.0f, position.y + 1.5f, 0);
 
         if (task != null)
         {
             switch (task.name)
             {
                 case "water":
+
                     if (water.IsComplete(prop))
                     {
                         task.status = 'S';
+                        result = Instantiate(correct, resultPosition, Quaternion.identity);
+                    }
+                    else
+                    {
+                        result = Instantiate(wrong, resultPosition, Quaternion.identity);
                     }
 
                     break;
@@ -107,10 +120,22 @@ public class AntieController : MonoBehaviour
                     if (food.IsComplete(prop))
                     {
                         task.status = 'S';
+                        result = Instantiate(correct, resultPosition, Quaternion.identity);
+                    }
+                    else
+                    {
+                        result = Instantiate(wrong, resultPosition, Quaternion.identity);
                     }
 
                     break;
             }
+
         }
+        else
+        {
+            result = Instantiate(question, resultPosition, Quaternion.identity);
+        }
+
+        if (result != null) result.gameObject.SetActive(true);
     }
 }
