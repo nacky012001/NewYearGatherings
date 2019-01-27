@@ -1555,6 +1555,8 @@ MonoBehaviour:
   timec: {fileID: 1433042006}
   ScoreText: {fileID: 377969047}
   Score: 0
+  player1: {fileID: 307559937}
+  player2: {fileID: 2020384442}
   taskList:
   - water
   - food
@@ -2439,7 +2441,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 6.83, y: -1.91}
+  m_Offset: {x: 6.7873898, y: -2.3352337}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2450,7 +2452,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.84338, y: 4.7042103}
+  m_Size: {x: 5.7581596, y: 3.8537426}
   m_EdgeRadius: 0
 --- !u!1 &965461345 stripped
 GameObject:
@@ -4802,7 +4804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &2020384443
 CircleCollider2D:
   m_ObjectHideFlags: 0

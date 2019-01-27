@@ -26,10 +26,13 @@ public class main : MonoBehaviour
     private string min;
     private string sec;
     public static float temp;
+    public GameObject player1;
+    public GameObject player2;
     // Use this for initialization
     void Start()
     {
-
+        player1.SetActive(StartC.p1);
+        player2.SetActive(StartC.p2);
         FinalSuccessCount = 0;
         FinalFailCount = 0;
      

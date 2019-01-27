@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class StartC : MonoBehaviour
 {
+    public static bool p1;
+    public static bool p2;
     public static float retemp;
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,16 @@ public class StartC : MonoBehaviour
     public void seond120()
     {
         main.temp = 7260f;
+    }
+    public void singleplayer()
+    {
+        p1 = true;
+        p2 = false;
+    }
+    public void multipleplayer()
+    {
+        p1 = true;
+        p2 = true;
     }
 
 }
