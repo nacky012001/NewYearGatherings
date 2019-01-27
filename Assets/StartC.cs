@@ -7,7 +7,8 @@ public class StartC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Screen.SetResolution(800, 600, false);
+        main.temp = 3660f;
+        Screen.SetResolution(1366, 768, false);
     }
 
     // Update is called once per frame
@@ -19,4 +20,17 @@ public class StartC : MonoBehaviour
     {
         SceneManager.LoadScene("HomeP");
     }
+    public void seond60()
+    {
+        main.temp = 3660f;
+    }
+    public void seond30()
+    {
+        main.temp = 1860f;
+    }
+    public void seond120()
+    {
+        main.temp = 7260f;
+    }
+
 }

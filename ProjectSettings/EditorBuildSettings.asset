@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/start.unity
     guid: 49a25acbc85f1574792c4fd8147c21eb
-  - enabled: 0
-    path: Assets/Scenes/HOMEBacjup.unity
-    guid: 56ad39f1cf94d46a9b5a32a01c2edbd6
   - enabled: 1
     path: Assets/Scenes/HOMEP.unity
     guid: 7e0df6106cd084d4fa05ab6ffa3b402a

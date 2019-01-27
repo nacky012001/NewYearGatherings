@@ -25,14 +25,14 @@ public class main : MonoBehaviour
     public static int FinalSuccessCount, FinalFailCount = 0;
     private string min;
     private string sec;
-    public float temp;
+    public static float temp;
     // Use this for initialization
     void Start()
     {
 
         FinalSuccessCount = 0;
         FinalFailCount = 0;
-        temp = 7260f;
+     
         gameTasks = new List<GameTask>();
         Score = 0;
         GenerateTask("water");
