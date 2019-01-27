@@ -15,6 +15,11 @@ public class UncleController : MonoBehaviour
     public bool isTaskComplete;
     public System.Random ran;
 
+    public Transform correct;
+    public Transform question;
+    Transform result = null;
+
+
     void Start()
     {
         ran = new System.Random();
@@ -60,6 +65,14 @@ public class UncleController : MonoBehaviour
     public void Submit(int tvIndex)
     {
         var task = FindObjectOfType<main>().gameTasks.GetMyTask(index);
+        var position = gameObject.transform.position;
+        var resultPosition = new Vector3(position.x + 1.0f, position.y + 1.5f, 0);
+
+        if (result != null)
+        {
+            Destroy(result.gameObject);
+            result = null;
+        }
 
         if (task != null)
         {
@@ -70,11 +83,18 @@ public class UncleController : MonoBehaviour
                     {
                         task.status = 'S';
                         isTaskComplete = true;
+                        result = Instantiate(correct, resultPosition, Quaternion.identity);
                     }
 
                     break;
-            
             }
+
         }
+        else
+        {
+            result = Instantiate(question, resultPosition, Quaternion.identity);
+        }
+
+        if (result != null) result.gameObject.SetActive(true);
     }
 }
