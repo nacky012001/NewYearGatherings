@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
     private string holdingObject;
 
     private Rigidbody2D rigidbody2D;
-    public List<KeyCode> runKey = new List<KeyCode>() { KeyCode.LeftShift, KeyCode.RightShift };
-    public List<KeyCode> actionKey = new List<KeyCode>() { KeyCode.J, KeyCode.RightCommand };
+    private List<KeyCode> runKey = new List<KeyCode>() { KeyCode.LeftShift, KeyCode.RightShift };
+    private List<KeyCode> actionKey = new List<KeyCode>() { KeyCode.G, KeyCode.L };
     public int playerIndex;
 
     public void Start()
