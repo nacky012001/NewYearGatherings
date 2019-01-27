@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,7 +18,9 @@ public class PlayerController : MonoBehaviour
     private string holdingObject;
 
     private Rigidbody2D rigidbody2D;
-
+    public List<KeyCode> runKey = new List<KeyCode>() { KeyCode.LeftShift, KeyCode.RightShift };
+    public List<KeyCode> actionKey = new List<KeyCode>() { KeyCode.J, KeyCode.RightCommand };
+    public int playerIndex;
 
     public void Start()
     {
@@ -26,9 +29,9 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        var direction = new Vector3(Input.GetAxis("P1_Horizontal"), Input.GetAxis("P1_Vertical"), 0).normalized;
+        var direction = new Vector3(Input.GetAxis("P"+ playerIndex + "_Horizontal"), Input.GetAxis("P" + playerIndex + "_Vertical"), 0).normalized;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && direction.magnitude > 0)
+        if (Input.GetKeyDown(runKey[playerIndex - 1]) && direction.magnitude > 0)
         {
             var lastPosition = gameObject.transform.position;
 
@@ -40,10 +43,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            rigidbody2D.velocity = new Vector3(playerSpeed * Input.GetAxis("P1_Horizontal"), playerSpeed * Input.GetAxis("P1_Vertical"), 0);
+            rigidbody2D.velocity = new Vector3(playerSpeed * Input.GetAxis("P" + playerIndex + "_Horizontal"), playerSpeed * Input.GetAxis("P" + playerIndex + "_Vertical"), 0);
         }
-
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(actionKey[playerIndex - 1]))
         {
             if (targetNpc != null)
             {

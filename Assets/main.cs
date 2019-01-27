@@ -32,11 +32,11 @@ public class main : MonoBehaviour
 
         FinalSuccessCount = 0;
         FinalFailCount = 0;
-        temp = 3660f;
+        temp = 7260f;
         gameTasks = new List<GameTask>();
         Score = 0;
         GenerateTask("water");
-        GenerateTask("food");
+        GenerateTask("room");
         GenerateTask("tv");
         //GenerateTask("food");
         Application.targetFrameRate = 60;
