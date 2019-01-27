@@ -16,7 +16,7 @@ public class ShowResultC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (main.finalScore > a * ((main.temp - 60) / 60))
+        if (main.finalScore > a * ((StartC.retemp - 60) / 60))
              { win.SetActive(true); }
         else
              { lose.SetActive(true);  }

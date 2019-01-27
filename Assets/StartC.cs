@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class StartC : MonoBehaviour
 {
+    public static float retemp;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,15 +15,22 @@ public class StartC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
     public void goHomeP()
     {
         SceneManager.LoadScene("HomeP");
+        retemp = main.temp;
+    }
+    public void gohelp()
+    {
+        SceneManager.LoadScene("help");
+        
     }
     public void seond60()
     {
         main.temp = 3660f;
+
     }
     public void seond30()
     {
