@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     
     private string holdingObject;
 
+    private bool isDashing;
+
     private Rigidbody2D rigidbody2D;
     private List<KeyCode> runKey = new List<KeyCode>() { KeyCode.LeftShift, KeyCode.RightShift };
     private List<KeyCode> actionKey = new List<KeyCode>() { KeyCode.G, KeyCode.L };
@@ -31,6 +33,8 @@ public class PlayerController : MonoBehaviour
     {
         var direction = new Vector3(Input.GetAxis("P"+ playerIndex + "_Horizontal"), Input.GetAxis("P" + playerIndex + "_Vertical"), 0).normalized;
 
+        isDashing = false;
+
         if (Input.GetKeyDown(runKey[playerIndex - 1]) && direction.magnitude > 0)
         {
             var lastPosition = gameObject.transform.position;
@@ -40,11 +44,14 @@ public class PlayerController : MonoBehaviour
             var starts = Instantiate(dashStars, lastPosition, Quaternion.Euler(direction.y * 90, direction.x * -90, 0));
             starts.gameObject.SetActive(true);
             starts.GetComponent<ParticleSystem>().Play();
+
+            isDashing = true;
         }
         else
         {
             rigidbody2D.velocity = new Vector3(playerSpeed * Input.GetAxis("P" + playerIndex + "_Horizontal"), playerSpeed * Input.GetAxis("P" + playerIndex + "_Vertical"), 0);
         }
+
         if (Input.GetKeyDown(actionKey[playerIndex - 1]))
         {
             if (targetNpc != null)
@@ -133,7 +140,16 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.collider.tag);
+        if (collision.collider.tag == "npc1" && isDashing)
+        {
+            var anotherPlayer = collision.collider.gameObject;
+            var velocity = anotherPlayer.GetComponent<Rigidbody2D>().velocity;
+            if (velocity.magnitude < 10)
+            {
+                var direction = new Vector3(Input.GetAxis("P" + playerIndex + "_Horizontal"), Input.GetAxis("P" + playerIndex + "_Vertical"), 0).normalized;
+                
+            }
+        }
 
         switch (collision.collider.tag)
         {
